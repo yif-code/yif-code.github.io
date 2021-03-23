@@ -180,6 +180,40 @@
             border-radius: 3px;
             transition: all .3s ease 0s;
         }
+
+        /*文本  */
+        .wenben {
+            position: absolute;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: 100px;
+            width: 400px;
+            height: 200px;
+
+            border-radius: 20px;
+            list-style: none;
+            background-color: rgba(111, 111, 111, .3);
+        }
+
+        .wenben li {
+            font-weight: 8px;
+            color: #78f;
+            display: inline-block;
+            font-size: 30px;
+            text-align: center;
+            line-height: 50px;
+            width: 100%;
+            height: 50px;
+            z-index: 6;
+            position: relative;
+        }
+
+
+
+        .wenben li:nth-child(1),
+        .wenben li:nth-child(2) {
+            color: #f78;
+        }
     </style>
 </head>
 
@@ -216,12 +250,18 @@
             <div class="banner_choice" id="choice">1</div>
         </ul>
     </div>
+
+    <ul class="wenben">
+        <li>距离佳佳小仙女过生日还有</li>
+        <li id="ct">2</li>
+        <li>距离傻飞过生日还有</li>
+        <li id="ct2">4</li>
+    </ul>
 </body>
 
 </html>
 <script>
     {
-
 
         var t = 0;/*当前位置*/
         timer1 = setInterval(getnext, 3000);
@@ -306,7 +346,7 @@
             pic[last2].style.transform = "scale(0.8)";
 
             pic[last].style.zIndex = 1;
-            pic[last].style.left = "60px";
+            pic[last].style.left = "0px";
             pic[last].style.transform = "scale(1)";
 
             pic[middle].style.zIndex = 3;
@@ -315,7 +355,7 @@
             pic[middle].style.marginTop = "25px";
 
             pic[next].style.zIndex = 1;
-            pic[next].style.left = "420px";
+            pic[next].style.left = "480px";
             pic[next].style.transform = "scale(1)";
 
             pic[next2].style.zIndex = 0;
@@ -339,4 +379,28 @@
             }
         }
     }
+
+    setInterval(() => {
+        let day = new Date();
+        let h1 = day.getHours();
+        let m1 = day.getMinutes();
+        let s1 = day.getSeconds();
+
+        let nowtime = +new Date();
+
+        let target = +new Date('2021-9-26 00:00:00');
+        let target1 = +new Date('2021-4-26 00:00:00');
+        let now = parseInt((target - nowtime) / 1000);
+        let now1 = parseInt((target1 - nowtime) / 1000);
+        d = parseInt(now / 60 / 60 / 24);
+        h = parseInt(now / 60 / 60 % 24);
+        m = parseInt(now / 60 % 60);
+        s = parseInt(now % 60);
+        ct.innerText = (d >= 10 ? d : '0' + d) + '天' + (h >= 10 ? h : '0' + h) + '时' + (m >= 10 ? m : '0' + m) + '分' + (s >= 10 ? s : '0' + s) + '秒';
+        d1 = parseInt(now1 / 60 / 60 / 24);
+        h1 = parseInt(now1 / 60 / 60 % 24);
+        m1 = parseInt(now1 / 60 % 60);
+        s1 = parseInt(now1 % 60);
+        ct2.innerText = (d1 >= 10 ? d1 : '0' + d1) + '天' + (h1 >= 10 ? h1 : '0' + h1) + '时' + (m1 >= 10 ? m1 : '0' + m1) + '分' + (s1 >= 10 ? s1 : '0' + s1) + '秒';
+    })
 </script>
