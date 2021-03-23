@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(180deg, #f78, #78f);
+        }
+
+        .first {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.2);
+            height: 250px;
+            width: 800px;
+            margin-top: 100px;
+            margin-left: -400px;
+            left: 50%;
+        }
+
+        .first ul {
+            position: absolute;
+            left: 50%;
+            margin-left: -400px;
+            list-style: none;
+            height: 250px;
+            width: 800px;
+        }
+
+        .first ul .left {
+            position: absolute;
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            color: rgba(255, 255, 255, 0);
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 50%;
+            top: 50%;
+            margin-top: -25px;
+            margin-left: 0;
+            text-align: center;
+            line-height: 50px;
+            transition: all .5s ease 0s;
+        }
+
+        .first ul .right {
+            position: absolute;
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            color: rgba(255, 255, 255, 0);
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 50%;
+            top: 50%;
+            left: 100%;
+            margin-top: -25px;
+            margin-left: -50px;
+            text-align: center;
+            line-height: 50px;
+            transition: all .5s ease 0s;
+        }
+
+        .first ul .right::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            margin-top: 15px;
+            margin-left: -15px;
+            border-top: solid 5px rgba(255, 255, 255, 0);
+            border-right: solid 5px rgba(255, 255, 255, 0);
+            transform: rotate(45deg);
+            transition: all .5s ease 0s;
+        }
+
+        .first ul .left::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            margin-top: 15px;
+            margin-left: -5px;
+            border-top: solid 5px rgba(255, 255, 255, 0);
+            border-right: solid 5px rgba(255, 255, 255, 0);
+            transform: rotate(-135deg);
+            transition: all .5s ease 0s;
+        }
+
+        .first ul:hover .left {
+            cursor: pointer;
+            margin-left: 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: rgb(0, 0, 0);
+
+        }
+
+        .first ul:hover .right {
+            cursor: pointer;
+            margin-left: -75px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: rgb(0, 0, 0);
+
+        }
+
+        .first ul:hover .right::before {
+            border-top: solid 5px rgba(255, 255, 255, 1);
+            border-right: solid 5px rgba(255, 255, 255, 1);
+        }
+
+        .first ul:hover .left::before {
+            border-top: solid 5px rgba(255, 255, 255, 1);
+            border-right: solid 5px rgba(255, 255, 255, 1);
+        }
+
+        .first li {
+            cursor: pointer;
+            float: left;
+            position: absolute;
+            left: 240px;
+            width: 320px;
+            height: 200px;
+            margin-top: 25px;
+            border-radius: 10px;
+            transition: 0.5s;
+        }
+
+        .first_bottom {
+            position: relative;
+            width: 800px;
+            height: 20px;
+            left: 50%;
+            margin-left: -400px;
+            background-color: rgba(255, 255, 255, 0.2);
+            text-decoration: none;
+        }
+
+        .first_bottom ul {
+
+            font-size: 0;
+            position: absolute;
+            width: 550px;
+            height: 10px;
+            left: 50%;
+            margin-top: 5px;
+            margin-left: -275px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        .first_bottom ul li {
+            display: inline-block;
+            width: 60px;
+            height: 10px;
+            margin-left: 25px;
+            margin-right: 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: 0px;
+            border-radius: 3px;
+        }
+
+        .first_bottom .banner_choice {
+            position: absolute;
+            width: 60px;
+            height: 10px;
+            z-index: -1;
+            background-color: black;
+            margin-top: -10px;
+            margin-left: 25px;
+            border-radius: 3px;
+            transition: all .3s ease 0s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first">
+        <ul id="banner">
+            <li id='fffd77' style="background-color:#fffd77;overflow: hidden;">
+                <img src="1.jpg" alt="" style="position: relative;width:  100%; border-radius: 10px;top:-40px">
+            </li>
+            <li id='78f' style="background-color:#78f;overflow: hidden;">
+                <img src="2.jpg" alt="" style="position: relative;height:  100%; border-radius: 10px;left:-20px">
+            </li>
+            <li id='77ffed' style="background-color:#77ffed;overflow: hidden;">
+                <img src="3.jpg" alt="" style="position: relative;width: 100%; border-radius: 10px;top:-40px;">
+            </li>
+            <li id='c175ff' style="background-color:#c175ff;overflow: hidden;">
+                <img src="4.jpg" alt="" style="position: relative;width:  100%; border-radius: 10px;top:0px">
+            </li>
+            <li id='fa5959' style="background-color:#fa5959;overflow: hidden;">
+                <img src="5.jpg" alt="" style="position: relative;width: 100%; border-radius: 10px;top:-20px">
+            </li>
+            <div class="left" id="left"></div>
+            <div class="right" id="right"></div>
+        </ul>
+
+    </div>
+    <div class="first_bottom">
+        <ul id="bottom">
+            <li id="c1"></li>
+            <li id="c2"></li>
+            <li id="c3"></li>
+            <li id="c4"></li>
+            <li id="c5"></li>
+            <div class="banner_choice" id="choice">1</div>
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    {
+
+
+        var t = 0;/*当前位置*/
+        timer1 = setInterval(getnext, 3000);
+        /*获取li*/
+        let pic = document.getElementById("banner").children;
+        var ul = document.getElementById("banner");
+        /*左右按钮触发*/
+        var click_next = document.getElementById("right");
+        var click_last = document.getElementById("left");
+
+        click_next.onclick = function () {
+            getnext();
+        }
+        click_last.onclick = function () {
+            getlast();
+        }
+        /*获取黑色滑块*/
+        var choice = document.getElementById("choice");
+
+        /*滑块经过触发黑色滑块移动*/
+        var bottom_child = document.getElementById("bottom").children;
+        var bottom = document.getElementById("bottom");
+        for (let i = 0; i < bottom_child.length; i++) {
+            bottom_child[i].onmouseenter = function () {
+                clearInterval(timer1);
+                how_move(i);
+            }
+            bottom_child[i].onmouseleave = function () {
+                timer1 = setInterval(getnext, 3000);
+            }
+        }
+        /*经过暂停*/
+        ul.onmouseover = function () {
+            clearInterval(timer1);
+        }
+        ul.onmouseout = function () {
+            timer1 = setInterval(getnext, 3000);
+        }
+
+        /*位置初始化*/
+        let next = (t + 6) % 5;
+        let next2 = (t + 7) % 5;
+        let last = (t + 4) % 5;
+        let last2 = (t + 3) % 5;
+        getmove(last2, last, t, next, next2);
+
+        function out() {
+            t++;
+            if (t == 5)
+                t = 0;
+        }
+        function out2() {
+            t--;
+            if (t == -1)
+                t = 4;
+        }
+
+        function getlast() {
+            /*上一张*/
+            out2();
+            let next = (t + 6) % 5;
+            let next2 = (t + 7) % 5;
+            let last = (t + 4) % 5;
+            let last2 = (t + 3) % 5;
+            getmove(last2, last, t, next, next2);
+
+        }
+        function getnext() {
+            /*下一张*/
+            out();
+            let next = (t + 6) % 5;
+            let next2 = (t + 7) % 5;
+            let last = (t + 4) % 5;
+            let last2 = (t + 3) % 5;
+            getmove(last2, last, t, next, next2);
+
+        }
+        function getmove(last2, last, middle, next, next2) {
+
+            pic[last2].style.zIndex = 0;
+            pic[last2].style.left = "-32px";
+            pic[last2].style.transform = "scale(0.8)";
+
+            pic[last].style.zIndex = 1;
+            pic[last].style.left = "60px";
+            pic[last].style.transform = "scale(1)";
+
+            pic[middle].style.zIndex = 3;
+            pic[middle].style.left = "240px";
+            pic[middle].style.transform = "scale(1.25)";
+            pic[middle].style.marginTop = "25px";
+
+            pic[next].style.zIndex = 1;
+            pic[next].style.left = "420px";
+            pic[next].style.transform = "scale(1)";
+
+            pic[next2].style.zIndex = 0;
+            pic[next2].style.left = "512px";
+            pic[next2].style.transform = "scale(0.8)";
+            /*滑块位置*/
+            let = foot = 110 * t + 25;
+            choice.style.marginLeft = foot + "px";
+        }
+        /*滑块移动连带卡片移动*/
+        function how_move(tar) {
+            var now_time = t;
+            if (tar == now_time)
+                ;
+            else if (tar > now_time) {
+                for (var i = 0; i < (tar - now_time); i++)
+                    getnext();
+            } else if (tar < now_time) {
+                for (var i = 0; i < (now_time - tar); i++)
+                    getlast();
+            }
+        }
+    }
+</script>
