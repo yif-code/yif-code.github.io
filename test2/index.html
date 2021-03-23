@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>demotest</title>
     <style>
         * {
             padding: 0;
@@ -18,6 +18,7 @@
             background-image: linear-gradient(180deg, #f78, #78f);
         }
 
+        /*主体*/
         .first {
             position: relative;
             background-color: rgba(255, 255, 255, 0.2);
@@ -37,6 +38,7 @@
             width: 800px;
         }
 
+        /*左按钮*/
         .first ul .left {
             position: absolute;
             z-index: 10;
@@ -53,6 +55,20 @@
             transition: all .5s ease 0s;
         }
 
+        .first ul .left::before {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            margin-top: 15px;
+            margin-left: -5px;
+            border-top: solid 5px rgba(255, 255, 255, 0);
+            border-right: solid 5px rgba(255, 255, 255, 0);
+            transform: rotate(-135deg);
+            transition: all .5s ease 0s;
+        }
+
+        /*右按钮*/
         .first ul .right {
             position: absolute;
             z-index: 10;
@@ -83,18 +99,7 @@
             transition: all .5s ease 0s;
         }
 
-        .first ul .left::before {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            margin-top: 15px;
-            margin-left: -5px;
-            border-top: solid 5px rgba(255, 255, 255, 0);
-            border-right: solid 5px rgba(255, 255, 255, 0);
-            transform: rotate(-135deg);
-            transition: all .5s ease 0s;
-        }
+        /*按钮经过显示*/
 
         .first ul:hover .left {
             cursor: pointer;
@@ -122,13 +127,22 @@
             border-right: solid 5px rgba(255, 255, 255, 1);
         }
 
+        /*卡片样式*/
         .first li {
+            cursor: pointer;
             float: left;
             position: absolute;
-            left: 0px;
+            left: 240px;
+            width: 320px;
+            height: 200px;
+            margin-top: 25px;
+            border-radius: 10px;
             transition: 0.5s;
+            text-align: center;
+            line-height: 200px;
         }
 
+        /*底部滑块*/
         .first_bottom {
             position: relative;
             width: 800px;
@@ -149,11 +163,9 @@
             margin-top: 5px;
             margin-left: -275px;
             text-decoration: none;
-        }
-
-        .first_bottom ul:hover {
             cursor: pointer;
         }
+
 
         .first_bottom ul li {
             display: inline-block;
@@ -181,13 +193,19 @@
 </head>
 
 <body>
+    <!-- <button>按钮</button> -->
     <div class="first">
         <ul id="banner">
+            <li id='fffd77' style="background-color:#fffd77;">#fffd77</li>
+            <li id='78f' style="background-color:#78f;">#78f</li>
+            <li id='77ffed' style="background-color:#77ffed;">#77ffed</li>
+            <li id='c175ff' style="background-color:#c175ff;">#c175ff</li>
+            <li id='fa5959' style="background-color:#fa5959;">#fa5959</li>
             <div class="left" id="left"></div>
             <div class="right" id="right"></div>
         </ul>
-
     </div>
+
     <div class="first_bottom">
         <ul id="bottom">
             <li id="c1"></li>
@@ -202,92 +220,46 @@
 
 </html>
 <script>
-    window.onload = function () {
+    {
         var t = 0;/*当前位置*/
-
         timer1 = setInterval(getnext, 3000);
-
-        let pic = new Array();
-        var i_ul = document.getElementById("banner");
+        /*获取li*/
+        let pic = document.getElementById("banner").children;
+        var ul = document.getElementById("banner");
+        /*左右按钮触发*/
         var click_next = document.getElementById("right");
         var click_last = document.getElementById("left");
-        var choice = document.getElementById("choice");
-        var bottom_child = Array.from(document.getElementById("bottom").children);
-        var bottom = document.getElementById("bottom");
-        function how_move(tar) {
-            var now_time = t;
-            if (tar == now_time)
-                ;
-            else if (tar > now_time) {
-                for (var i = 0; i < (tar - now_time); i++)
-                    getnext();
-            } else if (tar < now_time) {
-                for (var i = 0; i < (now_time - tar); i++)
-                    getlast();
-            }
-        }
 
-        bottom_child[0].onmouseenter = function () {
-            clearInterval(timer1);
-            how_move(0);
-        }
-
-        bottom_child[1].onmouseenter = function () {
-            clearInterval(timer1);
-            how_move(1);
-        }
-        bottom_child[2].onmouseenter = function () {
-            clearInterval(timer1);
-            how_move(2);
-        }
-        bottom_child[3].onmouseenter = function () {
-            clearInterval(timer1);
-            how_move(3);
-        }
-        bottom_child[4].onmouseenter = function () {
-            clearInterval(timer1);
-            how_move(4);
-        }
-        bottom.onmouseleave = function () {
-            timer1 = setInterval(getnext, 3000);
-        }
-        bottom.onmouseenter = function () {
-            clearInterval(timer1)
-        }
-
-
-
-        /**/
         click_next.onclick = function () {
             getnext();
         }
         click_last.onclick = function () {
             getlast();
         }
+        /*获取黑色滑块*/
+        var choice = document.getElementById("choice");
 
-        i_ul.onmouseover = function () {
+        /*滑块经过触发黑色滑块移动*/
+        var bottom_child = document.getElementById("bottom").children;
+        var bottom = document.getElementById("bottom");
+        for (let i = 0; i < bottom_child.length; i++) {
+            bottom_child[i].onmouseenter = function () {
+                clearInterval(timer1);
+                how_move(i);
+            }
+            bottom_child[i].onmouseleave = function () {
+                timer1 = setInterval(getnext, 3000);
+            }
+        }
+        /*经过暂停*/
+        ul.onmouseover = function () {
             clearInterval(timer1);
         }
-        i_ul.onmouseout = function () {
+        ul.onmouseout = function () {
             timer1 = setInterval(getnext, 3000);
         }
 
-
-        for (let i = 0; i < 5; i++) {
-            var i_li = document.createElement("li");
-            var i_img = document.createElement("img");
-            i_img.src = i + ".jpg";
-            i_img.style.width = "320px";
-            i_img.style.height = "200px";
-            i_img.style.borderRadius = "10px";
-            i_img.style.marginTop = "25px";
-            i_li.appendChild(i_img);
-            i_ul.appendChild(i_li);
-            pic.push(i_li);
-            pic[pic.length - 1].style.left = "0px";
-
-        }
-
+        /*位置初始化*/
         let next = (t + 6) % 5;
         let next2 = (t + 7) % 5;
         let last = (t + 4) % 5;
@@ -306,6 +278,7 @@
         }
 
         function getlast() {
+            /*上一张*/
             out2();
             let next = (t + 6) % 5;
             let next2 = (t + 7) % 5;
@@ -315,6 +288,7 @@
 
         }
         function getnext() {
+            /*下一张*/
             out();
             let next = (t + 6) % 5;
             let next2 = (t + 7) % 5;
@@ -336,7 +310,7 @@
             pic[middle].style.zIndex = 3;
             pic[middle].style.left = "240px";
             pic[middle].style.transform = "scale(1.25)";
-            pic[middle].style.marginTop = "-3px";
+            pic[middle].style.marginTop = "25px";
 
             pic[next].style.zIndex = 1;
             pic[next].style.left = "420px";
@@ -345,10 +319,22 @@
             pic[next2].style.zIndex = 0;
             pic[next2].style.left = "512px";
             pic[next2].style.transform = "scale(0.8)";
-
+            /*滑块位置*/
             let = foot = 110 * t + 25;
             choice.style.marginLeft = foot + "px";
         }
-
+        /*滑块移动连带卡片移动*/
+        function how_move(tar) {
+            var now_time = t;
+            if (tar == now_time)
+                ;
+            else if (tar > now_time) {
+                for (var i = 0; i < (tar - now_time); i++)
+                    getnext();
+            } else if (tar < now_time) {
+                for (var i = 0; i < (now_time - tar); i++)
+                    getlast();
+            }
+        }
     }
 </script>
